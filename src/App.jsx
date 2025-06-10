@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import Country from './Country';
 
 function App() {
 const[countries, setCountries] = useState([]);
@@ -18,11 +19,9 @@ useEffect(() => {
     {loading ? (
                 <h1>LODING..</h1>
             ) : (
-                <ul>
-                {countries.map((country) =>
-                    <li key={country.id}>{country.name}</li>
-                )}
-                </ul>
+                countries.map((country) => {
+                    return <Country key={country.id} {...country} />;
+                })
             )}
     </>
   )
